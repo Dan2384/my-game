@@ -30,6 +30,27 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door1`, function (spr
         NPC_Spawn()
     }
 })
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setImage(img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f 4 1 f 4 4 f 1 4 f . . 
+        . f e 4 4 4 4 4 4 e f . . 
+        . f f f e e e e f f f . . 
+        f e f b 7 7 7 7 b f e f . 
+        e 4 f 7 7 7 7 7 7 f 4 e . 
+        e e f 6 6 6 6 6 6 f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
+        `)
+    Faceingleft = true
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside1`, function (sprite, location) {
     if (level == 1) {
         tiles.setCurrentTilemap(maps[0])
@@ -273,6 +294,40 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`armory inside door 2`, functi
         NPC_Spawn()
     }
 })
+function Enemy_NPC () {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[0])
+        level = 0
+        mySprite13 = sprites.create(img`
+            ......ffff..............
+            ....fff77fff............
+            ...fff7777fff...........
+            ..fffeeeeeefff..........
+            ..ffe777777eef..........
+            ..fe7ffffff7ef..........
+            ..ffffeeeeffff......ccc.
+            .ffefbf66fbfeff....cddc.
+            .ffefbf66fbfeff...cddc..
+            .fee6dddddd6eef.ccddc...
+            fdfeeddddd6eeffecddc....
+            fbffee6666ee6fddccc.....
+            fbf6f777777f1edde.......
+            fcf.f777777f66ee........
+            .ff.f665566f............
+            ....ffffffff............
+            .....ff..ff.............
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            `, SpriteKind.Enemy)
+        tiles.placeOnRandomTile(mySprite13, assets.tile`myTile7`)
+        mySprite13.follow(mySprite, 80)
+    }
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8`, function (sprite, location) {
     if (level == 0) {
         tiles.setCurrentTilemap(maps[7])
@@ -759,6 +814,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Armory inside door 1`, functi
         NPC_Spawn()
     }
 })
+let Bullet: Sprite = null
+let mySprite13: Sprite = null
 let code = 0
 let mySprite8: Sprite = null
 let mySprite11: Sprite = null
@@ -771,6 +828,7 @@ let mySprite5: Sprite = null
 let mySprite4: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
+let Faceingleft = false
 let level = 0
 let mySprite: Sprite = null
 let maps: tiles.TileMapData[] = []
@@ -815,6 +873,7 @@ mySprite.z = 1
 scene.cameraFollowSprite(mySprite)
 tiles.setCurrentTilemap(tilemap`Main level 0`)
 NPC_Spawn()
+Enemy_NPC()
 forever(function () {
     if (level != 0) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
@@ -833,5 +892,27 @@ forever(function () {
     }
     if (level != 11) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC5)
+    }
+})
+forever(function () {
+    if (Faceingleft == true && controller.A.isPressed()) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . f 5 5 5 5 5 f . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, -100, 0)
     }
 })
