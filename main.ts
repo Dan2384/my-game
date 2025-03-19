@@ -5,6 +5,8 @@ namespace SpriteKind {
     export const NPC3 = SpriteKind.create()
     export const NPC4 = SpriteKind.create()
     export const NPC5 = SpriteKind.create()
+    export const Enemy1 = SpriteKind.create()
+    export const Enemy2 = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`house 6 inside 2`, function (sprite, location) {
     if (level == 4) {
@@ -12,6 +14,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`house 6 inside 2`, function (
         mySprite.setPosition(245, 450)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile19`, function (sprite, location) {
@@ -20,6 +23,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile19`, function (sprite, 
         mySprite.setPosition(260, 500)
         level = 9
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door1`, function (sprite, location) {
@@ -28,6 +32,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door1`, function (spr
         mySprite.setPosition(200, 450)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -49,7 +54,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f f f f f f . . . . 
         . . . f f . . f f . . . . 
         `)
-    Faceingleft = true
+    Faceingleft = false
+    Faceingright = false
+    Faceingup = true
+    Faceingdown = false
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside1`, function (sprite, location) {
     if (level == 1) {
@@ -57,6 +65,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside1`, func
         mySprite.setPosition(200, 130)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 // 2648 is the code for the door
@@ -98,6 +107,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`bunker top door`, function (s
         mySprite.setPosition(40, 500)
         level = 13
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 1`, function (sprite, location) {
@@ -106,6 +116,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 1`, function (sprite, lo
         mySprite.setPosition(1380, 145)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Bunker top door`, function (sprite, location) {
@@ -114,6 +125,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Bunker top door`, function (s
         mySprite.setPosition(40, 500)
         level = 13
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door3`, function (sprite, location) {
@@ -122,6 +134,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door3`, function (sprite, loc
         mySprite.setPosition(323, 160)
         level = 6
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door2`, function (sprite, location) {
@@ -130,7 +143,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door2`, function (spr
         mySprite.setPosition(200, 450)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy1, function (sprite, otherSprite) {
+    statusbar.value += -10
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC5, function (sprite, otherSprite) {
     if (otherSprite == mySprite12) {
@@ -145,6 +162,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 2`, function (sprite, lo
         mySprite.setPosition(1380, 145)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`house 4 inside 2`, function (sprite, location) {
@@ -153,6 +171,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`house 4 inside 2`, function (
         mySprite.setPosition(245, 290)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 1`, function (sprite, location) {
@@ -161,7 +180,32 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 1`, function
         mySprite.setPosition(245, 945)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setImage(img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f 4 1 f 4 4 f 1 4 f . . 
+        . f e 4 4 4 4 4 4 e f . . 
+        . f f f e e e e f f f . . 
+        f e f b 7 7 7 7 b f e f . 
+        e 4 f 7 7 7 7 7 7 f 4 e . 
+        e e f 6 6 6 6 6 6 f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
+        `)
+    Faceingleft = true
+    Faceingright = false
+    Faceingup = false
+    Faceingdown = false
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC2, function (sprite, otherSprite) {
     if (otherSprite == mySprite9) {
@@ -176,7 +220,11 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairWest, function (spri
         mySprite.setPosition(640, 500)
         level = 9
         NPC_Spawn()
+        Enemy_NPC()
     }
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(mySprite13)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 2`, function (sprite, location) {
     if (level == 11) {
@@ -184,6 +232,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 2`, function
         mySprite.setPosition(245, 945)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1`, function (sprite, location) {
@@ -192,6 +241,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1`, function (sprite, loc
         mySprite.setPosition(25, 160)
         level = 12
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC3, function (sprite, otherSprite) {
@@ -207,6 +257,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 house 1`, function (spr
         mySprite.setPosition(25, 160)
         level = 2
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC4, function (sprite, otherSprite) {
@@ -223,6 +274,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door6`, function (sprite, loc
         mySprite.setPosition(25, 160)
         level = 4
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC1, function (sprite, otherSprite) {
@@ -231,6 +283,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC1, function (sprite, otherSpr
             mySprite8.sayText("Can I help you find anything in the store?", 3000, true)
         })
     }
+})
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    info.changeLifeBy(-1)
+    statusbar.value = 700
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
     code = game.askForNumber("Password", 4)
@@ -246,12 +302,37 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, 
         NPC_Spawn()
     }
 })
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setImage(img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f 4 1 f 4 4 f 1 4 f . . 
+        . f e 4 4 4 4 4 4 e f . . 
+        . f f f e e e e f f f . . 
+        f e f b 7 7 7 7 b f e f . 
+        e 4 f 7 7 7 7 7 7 f 4 e . 
+        e e f 6 6 6 6 6 6 f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
+        `)
+    Faceingleft = false
+    Faceingright = true
+    Faceingup = false
+    Faceingdown = false
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door10`, function (sprite, location) {
     if (level == 0) {
         tiles.setCurrentTilemap(maps[9])
         mySprite.setPosition(660, 50)
         level = 9
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairEast, function (sprite, location) {
@@ -259,8 +340,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairEast, function (spri
         tiles.setCurrentTilemap(maps[0])
         mySprite.setPosition(440, 450)
         level = 0
+        NPC_Spawn()
+        Enemy_NPC()
     }
-    NPC_Spawn()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`House 3 door1`, function (sprite, location) {
     if (level == 5) {
@@ -268,6 +350,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 3 door1`, function (spr
         mySprite.setPosition(200, 290)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door3 --- 2`, function (sprite, location) {
@@ -276,6 +359,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door3 --- 2`, function (sprit
         mySprite.setPosition(323, 160)
         level = 6
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door2 ---2`, function (sprite, location) {
@@ -284,7 +368,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door2 ---2`, function (sprite
         mySprite.setPosition(323, 160)
         level = 5
         NPC_Spawn()
+        Enemy_NPC()
     }
+})
+sprites.onOverlap(SpriteKind.Enemy2, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(mySprite15)
+})
+sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(mySprite14)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`armory inside door 2`, function (sprite, location) {
     if (level == 7) {
@@ -292,6 +383,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`armory inside door 2`, functi
         mySprite.setPosition(440, 287)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 function Enemy_NPC () {
@@ -324,17 +416,112 @@ function Enemy_NPC () {
             ........................
             ........................
             `, SpriteKind.Enemy)
-        tiles.placeOnRandomTile(mySprite13, assets.tile`myTile7`)
+        tiles.placeOnRandomTile(mySprite13, sprites.castle.tilePath5)
+        mySprite13.follow(mySprite, 80)
+    }
+    if (level == 13) {
+        tiles.setCurrentTilemap(maps[13])
+        level = 13
+        mySprite14 = sprites.create(img`
+            ......ffff..............
+            ....fff77fff............
+            ...fff7777fff...........
+            ..fffeeeeeefff..........
+            ..ffe777777eef..........
+            ..fe7ffffff7ef..........
+            ..ffffeeeeffff......ccc.
+            .ffefbf66fbfeff....cddc.
+            .ffefbf66fbfeff...cddc..
+            .fee6dddddd6eef.ccddc...
+            fdfeeddddd6eeffecddc....
+            fbffee6666ee6fddccc.....
+            fbf6f777777f1edde.......
+            fcf.f777777f66ee........
+            .ff.f665566f............
+            ....ffffffff............
+            .....ff..ff.............
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            `, SpriteKind.Enemy1)
+        tiles.placeOnRandomTile(mySprite13, assets.tile`myTile27`)
+        mySprite13.follow(mySprite, 80)
+    }
+    if (level == 10) {
+        tiles.setCurrentTilemap(maps[10])
+        level = 10
+        mySprite15 = sprites.create(img`
+            ......ffff..............
+            ....fff77fff............
+            ...fff7777fff...........
+            ..fffeeeeeefff..........
+            ..ffe777777eef..........
+            ..fe7ffffff7ef..........
+            ..ffffeeeeffff......ccc.
+            .ffefbf66fbfeff....cddc.
+            .ffefbf66fbfeff...cddc..
+            .fee6dddddd6eef.ccddc...
+            fdfeeddddd6eeffecddc....
+            fbffee6666ee6fddccc.....
+            fbf6f777777f1edde.......
+            fcf.f777777f66ee........
+            .ff.f665566f............
+            ....ffffffff............
+            .....ff..ff.............
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            `, SpriteKind.Enemy2)
+        tiles.placeOnRandomTile(mySprite13, assets.tile`myTile27`)
         mySprite13.follow(mySprite, 80)
     }
 }
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setImage(img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f 4 1 f 4 4 f 1 4 f . . 
+        . f e 4 4 4 4 4 4 e f . . 
+        . f f f e e e e f f f . . 
+        f e f b 7 7 7 7 b f e f . 
+        e 4 f 7 7 7 7 7 7 f 4 e . 
+        e e f 6 6 6 6 6 6 f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
+        `)
+    Faceingleft = false
+    Faceingright = false
+    Faceingup = false
+    Faceingdown = true
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8`, function (sprite, location) {
     if (level == 0) {
         tiles.setCurrentTilemap(maps[7])
         mySprite.setPosition(25, 175)
         level = 7
         NPC_Spawn()
+        Enemy_NPC()
     }
+})
+info.onLifeZero(function () {
+    game.gameOver(false)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy2, function (sprite, otherSprite) {
+    statusbar.value += -10
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door9 --2`, function (sprite, location) {
     if (level == 0) {
@@ -342,6 +529,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door9 --2`, function (sprite,
         mySprite.setPosition(25, 175)
         level = 11
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -2 -Shop outside`, function (sprite, location) {
@@ -350,6 +538,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -2 -Shop outside`, func
         mySprite.setPosition(310, 175)
         level = 1
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8 --2`, function (sprite, location) {
@@ -358,6 +547,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8 --2`, function (sprite,
         mySprite.setPosition(25, 175)
         level = 7
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door9`, function (sprite, location) {
@@ -366,6 +556,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door9`, function (sprite, loc
         mySprite.setPosition(25, 175)
         level = 11
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`House 4 inside`, function (sprite, location) {
@@ -374,6 +565,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 4 inside`, function (sp
         mySprite.setPosition(245, 290)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door10 --2`, function (sprite, location) {
@@ -382,6 +574,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door10 --2`, function (sprite
         mySprite.setPosition(660, 50)
         level = 9
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside`, function (sprite, location) {
@@ -390,6 +583,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside`, funct
         mySprite.setPosition(200, 130)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door6 --2`, function (sprite, location) {
@@ -397,8 +591,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door6 --2`, function (sprite,
         tiles.setCurrentTilemap(maps[4])
         mySprite.setPosition(25, 160)
         level = 4
+        NPC_Spawn()
+        Enemy_NPC()
     }
-    NPC_Spawn()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -Shop outside`, function (sprite, location) {
     if (level == 0) {
@@ -406,6 +601,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -Shop outside`, functio
         mySprite.setPosition(310, 175)
         level = 1
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside`, function (sprite, location) {
@@ -414,6 +610,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside`, function (sp
         mySprite.setPosition(245, 130)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 --0`, function (sprite, location) {
@@ -422,6 +619,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 --0`, function (sprite,
         mySprite.setPosition(25, 160)
         level = 12
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 function NPC_Spawn () {
@@ -761,6 +959,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 --2 house 1`, function 
         mySprite.setPosition(25, 160)
         level = 2
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door0`, function (sprite, location) {
@@ -769,6 +968,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door0`, function (sprite, loc
         mySprite.setPosition(323, 160)
         level = 5
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`House 3 door2`, function (sprite, location) {
@@ -777,6 +977,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 3 door2`, function (spr
         mySprite.setPosition(200, 290)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside2`, function (sprite, location) {
@@ -785,6 +986,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside2`, function (s
         mySprite.setPosition(245, 130)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`House 6 inside0`, function (sprite, location) {
@@ -793,6 +995,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 6 inside0`, function (s
         mySprite.setPosition(245, 450)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (sprite, location) {
@@ -801,10 +1004,14 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (spr
         mySprite.setPosition(640, 500)
         level = 13
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorLight2, function (sprite, location) {
 	
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    statusbar.value += -10
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Armory inside door 1`, function (sprite, location) {
     if (level == 7) {
@@ -812,14 +1019,17 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Armory inside door 1`, functi
         mySprite.setPosition(440, 287)
         level = 0
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 let Bullet: Sprite = null
-let mySprite13: Sprite = null
+let mySprite14: Sprite = null
+let mySprite15: Sprite = null
 let code = 0
 let mySprite8: Sprite = null
 let mySprite11: Sprite = null
 let mySprite10: Sprite = null
+let mySprite13: Sprite = null
 let mySprite9: Sprite = null
 let mySprite12: Sprite = null
 let mySprite7: Sprite = null
@@ -828,8 +1038,12 @@ let mySprite5: Sprite = null
 let mySprite4: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
+let Faceingdown = false
+let Faceingup = false
+let Faceingright = false
 let Faceingleft = false
 let level = 0
+let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let maps: tiles.TileMapData[] = []
 // Arrays start at 0, not 1.
@@ -874,6 +1088,13 @@ scene.cameraFollowSprite(mySprite)
 tiles.setCurrentTilemap(tilemap`Main level 0`)
 NPC_Spawn()
 Enemy_NPC()
+statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+info.setLife(3)
+statusbar.value = 700
+statusbar.setLabel("HP")
+statusbar.setBarBorder(1, 15)
+statusbar.attachToSprite(mySprite)
+statusbar.setOffsetPadding(0, 3)
 forever(function () {
     if (level != 0) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
@@ -905,7 +1126,7 @@ forever(function () {
             . . . . . . . . . . . . . . . . 
             . . . . . . f f f f . . . . . . 
             . . . . . f 5 5 5 5 f . . . . . 
-            . . . . . f 5 5 5 5 5 f . . . . 
+            . . . . f 5 5 5 5 5 f . . . . . 
             . . . . . f 5 5 5 5 f . . . . . 
             . . . . . . f f f f . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -914,5 +1135,82 @@ forever(function () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, mySprite, -100, 0)
+    }
+})
+forever(function () {
+    if (Faceingright == true && controller.A.isPressed()) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . f 5 5 5 5 5 f . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 100, 0)
+    }
+})
+forever(function () {
+    if (Faceingup == true && controller.A.isPressed()) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . f 5 f . . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 0, -100)
+    }
+})
+forever(function () {
+    if (Faceingdown == true && controller.A.isPressed()) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . . f 5 f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 0, 100)
+    }
+})
+forever(function () {
+    if (level != 0) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    }
+    if (level != 13) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy1)
+    }
+    if (level != 10) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy2)
     }
 })
