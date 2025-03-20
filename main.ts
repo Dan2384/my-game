@@ -295,11 +295,13 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, 
         mySprite.setPosition(50, 200)
         level = 10
         NPC_Spawn()
+        Enemy_NPC()
     } else {
         tiles.setCurrentTilemap(maps[9])
         mySprite.setPosition(260, 500)
         level = 9
         NPC_Spawn()
+        Enemy_NPC()
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -372,7 +374,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door2 ---2`, function (sprite
     }
 })
 sprites.onOverlap(SpriteKind.Enemy2, SpriteKind.Projectile, function (sprite, otherSprite) {
-    sprites.destroy(mySprite15)
+    sprites.destroy(mySprite16)
 })
 sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(mySprite14)
@@ -448,13 +450,13 @@ function Enemy_NPC () {
             ........................
             ........................
             `, SpriteKind.Enemy1)
-        tiles.placeOnRandomTile(mySprite13, assets.tile`myTile27`)
-        mySprite13.follow(mySprite, 80)
+        tiles.placeOnRandomTile(mySprite14, assets.tile`myTile27`)
+        mySprite14.follow(mySprite, 80)
     }
     if (level == 10) {
         tiles.setCurrentTilemap(maps[10])
         level = 10
-        mySprite15 = sprites.create(img`
+        mySprite16 = sprites.create(img`
             ......ffff..............
             ....fff77fff............
             ...fff7777fff...........
@@ -480,8 +482,8 @@ function Enemy_NPC () {
             ........................
             ........................
             `, SpriteKind.Enemy2)
-        tiles.placeOnRandomTile(mySprite13, assets.tile`myTile27`)
-        mySprite13.follow(mySprite, 80)
+        tiles.placeOnRandomTile(mySprite16, assets.tile`myTile17`)
+        mySprite16.follow(mySprite, 70)
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1024,7 +1026,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Armory inside door 1`, functi
 })
 let Bullet: Sprite = null
 let mySprite14: Sprite = null
-let mySprite15: Sprite = null
+let mySprite16: Sprite = null
 let code = 0
 let mySprite8: Sprite = null
 let mySprite11: Sprite = null

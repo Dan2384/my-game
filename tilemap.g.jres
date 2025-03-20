@@ -824,19 +824,6 @@
         ],
         "displayName": "Armory"
     },
-    "level4": {
-        "id": "level4",
-        "mimeType": "application/mkcd-tilemap",
-        "data": "MTAwZTAwMGUwMDAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTA0MDQwNDAxMDQwNDAxMDQwNDA0MDQwNDAxMDEwNDAzMDQwMTA0MDQwMTA0MDQwNDA0MDQwMTAxMDQwNDA0MDEwNDA0MDEwNDA0MDQwNDA0MDEwMTA0MDQwNDA0MDQwNDA0MDQwNDA0MDQwNDAxMDEwNDA0MDQwNDA0MDQwNDA0MDQwNDA0MDQwMTAxMDQwNDA0MDEwNDA0MDEwNDA0MDQwNDA0MDEwMTA0MDQwNDAxMDQwNDAxMDQwNDA0MDQwNDAxMDEwNDA0MDQwMTA0MDQwMTA0MDQwNDA0MDQwMTAxMDEwMTAxMDEwNDA0MDEwNDA0MDQwNDA0MDEwMTA0MDQwNDA0MDQwNDAxMDQwNDA0MDQwNDAxMDEwNDA0MDQwNDA0MDQwMTA0MDQwNDA0MDQwMTAxMDIwNDA0MDEwNDA0MDEwNDA0MDQwNDA0MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMjIyMjIyMjIyMjIyMjIwMjAwMDIyMDAwMDAyMDAyMDAwMjIwMDAwMDIwMDIwMDAyMjAwMDAwMjAwMjAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDIwMDIwMDAyMjAwMDAwMjAwMjAwMDIyMDAwMDAyMDAyMDAwMjIwMDAwMDIwMjIyMjAyMjAwMDAwMjAwMjAwMDAyMDAwMDAyMDAyMDAwMDIwMDAwMDIwMDIwMDAyMjAwMDAwMjAyMjIyMjIyMjIyMjIyMg==",
-        "tileset": [
-            "myTiles.transparency16",
-            "myTiles.tile4",
-            "myTiles.tile41",
-            "myTiles.tile71",
-            "myTiles.tile72"
-        ],
-        "displayName": "Bunker level 3"
-    },
     "Level 1": {
         "id": "Level 1",
         "mimeType": "application/mkcd-tilemap",
@@ -921,6 +908,20 @@
             "myTiles.tile72"
         ],
         "displayName": "Main level 0"
+    },
+    "level4": {
+        "id": "level4",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAwZTAwMGUwMDAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTA0MDQwNDAxMDQwNDAxMDQwNDA0MDQwNDAxMDEwNDAzMDQwMTA0MDQwMTA0MDQwNDA0MDQwMTAxMDQwNDA0MDEwNDA0MDEwNDA0MDQwNDA0MDEwMTA0MDQwNDA0MDQwNDA0MDQwNDA0MDQwNDAxMDEwNDA0MDQwNDA0MDQwNDA0MDQwNDA0MDQwMTAxMDQwNDA0MDEwNDA0MDEwNDA0MDQwNDA0MDEwMTA0MDQwNDAxMDQwNDAxMDQwNDA0MDQwNDAxMDEwNDA0MDQwMTA0MDQwMTA0MDQwNDA0MDQwMTAxMDEwMTAxMDEwNDA0MDEwNDA0MDQwNDA0MDEwMTA0MDQwNDA0MDQwNDAxMDQwNDA0MDQwNTAxMDEwNDA0MDQwNDA0MDQwMTA0MDQwNDA0MDQwMTAxMDIwNDA0MDEwNDA0MDEwNDA0MDQwNDA0MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMjIyMjIyMjIyMjIyMjIwMjAwMDIyMDAwMDAyMDAyMDAwMjIwMDAwMDIwMDIwMDAyMjAwMDAwMjAwMjAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDIwMDIwMDAyMjAwMDAwMjAwMjAwMDIyMDAwMDAyMDAyMDAwMjIwMDAwMDIwMjIyMjAyMjAwMDAwMjAwMjAwMDAyMDAwMDAyMDAyMDAwMDIwMDAwMDIwMDIwMDAyMjAwMDAwMjAyMjIyMjIyMjIyMjIyMg==",
+        "tileset": [
+            "myTiles.transparency16",
+            "myTiles.tile4",
+            "myTiles.tile41",
+            "myTiles.tile71",
+            "myTiles.tile72",
+            "myTiles.tile39"
+        ],
+        "displayName": "Bunker level 3"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
