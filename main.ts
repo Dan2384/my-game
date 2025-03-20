@@ -119,6 +119,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 1`, function (sprite, lo
         Enemy_NPC()
     }
 })
+sprites.onOverlap(SpriteKind.NPC4, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Bunker top door`, function (sprite, location) {
     if (level == 0) {
         tiles.setCurrentTilemap(maps[13])
@@ -174,6 +177,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`house 4 inside 2`, function (
         Enemy_NPC()
     }
 })
+sprites.onOverlap(SpriteKind.NPC, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 1`, function (sprite, location) {
     if (level == 11) {
         tiles.setCurrentTilemap(maps[0])
@@ -225,6 +231,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairWest, function (spri
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(mySprite13)
+    info.changeScoreBy(1)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 2`, function (sprite, location) {
     if (level == 11) {
@@ -288,6 +295,7 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
     info.changeLifeBy(-1)
     statusbar.value = 700
 })
+// Robotics Team Number for code
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
     code = game.askForNumber("Password", 4)
     if (code == 2648) {
@@ -375,9 +383,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door2 ---2`, function (sprite
 })
 sprites.onOverlap(SpriteKind.Enemy2, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(mySprite16)
+    info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(mySprite14)
+    info.changeScoreBy(1)
+})
+sprites.onOverlap(SpriteKind.NPC1, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`armory inside door 2`, function (sprite, location) {
     if (level == 7) {
@@ -387,6 +400,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`armory inside door 2`, functi
         NPC_Spawn()
         Enemy_NPC()
     }
+})
+sprites.onOverlap(SpriteKind.NPC2, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
 })
 function Enemy_NPC () {
     if (level == 0) {
@@ -519,6 +535,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8`, function (sprite, loc
         Enemy_NPC()
     }
 })
+sprites.onOverlap(SpriteKind.NPC5, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
+})
 info.onLifeZero(function () {
     game.gameOver(false)
 })
@@ -569,6 +588,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 4 inside`, function (sp
         NPC_Spawn()
         Enemy_NPC()
     }
+})
+sprites.onOverlap(SpriteKind.NPC3, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door10 --2`, function (sprite, location) {
     if (level == 0) {
@@ -1097,6 +1119,7 @@ statusbar.setLabel("HP")
 statusbar.setBarBorder(1, 15)
 statusbar.attachToSprite(mySprite)
 statusbar.setOffsetPadding(0, 3)
+info.startCountdown(240)
 forever(function () {
     if (level != 0) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
@@ -1115,6 +1138,12 @@ forever(function () {
     }
     if (level != 11) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC5)
+    }
+})
+forever(function () {
+    if (info.score() == 4) {
+        info.changeLifeBy(1)
+        info.setScore(0)
     }
 })
 forever(function () {
