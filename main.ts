@@ -8,17 +8,16 @@ namespace SpriteKind {
     export const Enemy1 = SpriteKind.create()
     export const Enemy2 = SpriteKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`house 6 inside 2`, function (sprite, location) {
-    if (level == 4) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(245, 450)
-        level = 0
+// Robotics Team Number for code
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile56, function (sprite, location) {
+    code = game.askForNumber("Password", 4)
+    if (code == 2648) {
+        tiles.setCurrentTilemap(maps[10])
+        mySprite.setPosition(50, 200)
+        level = 10
         NPC_Spawn()
         Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile19`, function (sprite, location) {
-    if (level == 10) {
+    } else {
         tiles.setCurrentTilemap(maps[9])
         mySprite.setPosition(260, 500)
         level = 9
@@ -26,11 +25,20 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile19`, function (sprite, 
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door1`, function (sprite, location) {
-    if (level == 6) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(200, 450)
-        level = 0
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile16, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[1])
+        mySprite.setPosition(310, 175)
+        level = 1
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile25, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[4])
+        mySprite.setPosition(25, 160)
+        level = 4
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -59,10 +67,19 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     Faceingup = true
     Faceingdown = false
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside1`, function (sprite, location) {
-    if (level == 1) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile62, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[12])
+        mySprite.setPosition(25, 160)
+        level = 12
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile59, function (sprite, location) {
+    if (level == 2) {
         tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(200, 130)
+        mySprite.setPosition(245, 130)
         level = 0
         NPC_Spawn()
         Enemy_NPC()
@@ -101,19 +118,19 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite, otherSpri
         })
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`bunker top door`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[13])
-        mySprite.setPosition(40, 500)
-        level = 13
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile60, function (sprite, location) {
+    if (level == 2) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(245, 130)
+        level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 1`, function (sprite, location) {
-    if (level == 9) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile50, function (sprite, location) {
+    if (level == 5) {
         tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(1380, 145)
+        mySprite.setPosition(200, 290)
         level = 0
         NPC_Spawn()
         Enemy_NPC()
@@ -122,7 +139,25 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 1`, function (sprite, lo
 sprites.onOverlap(SpriteKind.NPC4, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.gameOver(false)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Bunker top door`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile33, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[9])
+        mySprite.setPosition(660, 50)
+        level = 9
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile48, function (sprite, location) {
+    if (level == 4) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(245, 450)
+        level = 0
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile27, function (sprite, location) {
     if (level == 0) {
         tiles.setCurrentTilemap(maps[13])
         mySprite.setPosition(40, 500)
@@ -131,35 +166,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Bunker top door`, function (s
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door3`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile30, function (sprite, location) {
     if (level == 0) {
-        tiles.setCurrentTilemap(maps[6])
-        mySprite.setPosition(323, 160)
-        level = 6
+        tiles.setCurrentTilemap(maps[7])
+        mySprite.setPosition(25, 175)
+        level = 7
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`House 5 door2`, function (sprite, location) {
-    if (level == 6) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(200, 450)
-        level = 0
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy1, function (sprite, otherSprite) {
-    statusbar.value += -10
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC5, function (sprite, otherSprite) {
-    if (otherSprite == mySprite12) {
-        timer.throttle("action", 6000, function () {
-            mySprite12.sayText("Can I help you find anything in the store?", 3000, true)
-        })
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 2`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile64, function (sprite, location) {
     if (level == 9) {
         tiles.setCurrentTilemap(maps[0])
         mySprite.setPosition(1380, 145)
@@ -168,19 +184,53 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 2`, function (sprite, lo
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`house 4 inside 2`, function (sprite, location) {
-    if (level == 12) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy1, function (sprite, otherSprite) {
+    statusbar.value += -10
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile51, function (sprite, location) {
+    if (level == 5) {
         tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(245, 290)
+        mySprite.setPosition(200, 290)
         level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-sprites.onOverlap(SpriteKind.NPC, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.gameOver(false)
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC5, function (sprite, otherSprite) {
+    if (otherSprite == mySprite12) {
+        timer.throttle("action", 6000, function () {
+            mySprite12.sayText("Can I help you find anything in the store?", 3000, true)
+        })
+    }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 1`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile34, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[9])
+        mySprite.setPosition(660, 50)
+        level = 9
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile52, function (sprite, location) {
+    if (level == 6) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(200, 450)
+        level = 0
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile36, function (sprite, location) {
+    if (level == 1) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(200, 130)
+        level = 0
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile45, function (sprite, location) {
     if (level == 11) {
         tiles.setCurrentTilemap(maps[0])
         mySprite.setPosition(245, 945)
@@ -188,6 +238,27 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 1`, function
         NPC_Spawn()
         Enemy_NPC()
     }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile19, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[6])
+        mySprite.setPosition(323, 160)
+        level = 6
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile31, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[11])
+        mySprite.setPosition(25, 175)
+        level = 11
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+sprites.onOverlap(SpriteKind.NPC, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setImage(img`
@@ -229,24 +300,33 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairWest, function (spri
         Enemy_NPC()
     }
 })
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
-    sprites.destroy(mySprite13)
-    info.changeScoreBy(1)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Farm shop inside 2`, function (sprite, location) {
-    if (level == 11) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(245, 945)
-        level = 0
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile24, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[2])
+        mySprite.setPosition(25, 160)
+        level = 2
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile41, function (sprite, location) {
+    if (level == 10) {
+        tiles.setCurrentTilemap(maps[9])
+        mySprite.setPosition(260, 500)
+        level = 9
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(mySprite13)
+    info.changeScoreBy(1)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile28, function (sprite, location) {
     if (level == 0) {
-        tiles.setCurrentTilemap(maps[12])
-        mySprite.setPosition(25, 160)
-        level = 12
+        tiles.setCurrentTilemap(maps[13])
+        mySprite.setPosition(40, 500)
+        level = 13
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -257,14 +337,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC3, function (sprite, otherSpr
             mySprite10.sayText("I've been trapped here for over a year", 3000, true)
         })
     }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 house 1`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[2])
-        mySprite.setPosition(25, 160)
-        level = 2
-        NPC_Spawn()
-        Enemy_NPC()
+    if (otherSprite == Mysprite17) {
+        timer.throttle("action", 6000, function () {
+            Mysprite17.sayText("58", 3000, true)
+        })
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC4, function (sprite, otherSprite) {
@@ -275,11 +351,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC4, function (sprite, otherSpr
         })
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door6`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[4])
-        mySprite.setPosition(25, 160)
-        level = 4
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile49, function (sprite, location) {
+    if (level == 4) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(245, 450)
+        level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -294,23 +370,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC1, function (sprite, otherSpr
 statusbars.onZero(StatusBarKind.Health, function (status) {
     info.changeLifeBy(-1)
     statusbar.value = 700
-})
-// Robotics Team Number for code
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
-    code = game.askForNumber("Password", 4)
-    if (code == 2648) {
-        tiles.setCurrentTilemap(maps[10])
-        mySprite.setPosition(50, 200)
-        level = 10
-        NPC_Spawn()
-        Enemy_NPC()
-    } else {
-        tiles.setCurrentTilemap(maps[9])
-        mySprite.setPosition(260, 500)
-        level = 9
-        NPC_Spawn()
-        Enemy_NPC()
-    }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setImage(img`
@@ -336,11 +395,11 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     Faceingup = false
     Faceingdown = false
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door10`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[9])
-        mySprite.setPosition(660, 50)
-        level = 9
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile54, function (sprite, location) {
+    if (level == 7) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(440, 287)
+        level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -354,29 +413,20 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairEast, function (spri
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`House 3 door1`, function (sprite, location) {
-    if (level == 5) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile26, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[4])
+        mySprite.setPosition(25, 160)
+        level = 4
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile58, function (sprite, location) {
+    if (level == 1) {
         tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(200, 290)
+        mySprite.setPosition(200, 130)
         level = 0
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door3 --- 2`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[6])
-        mySprite.setPosition(323, 160)
-        level = 6
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door2 ---2`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[5])
-        mySprite.setPosition(323, 160)
-        level = 5
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -389,17 +439,17 @@ sprites.onOverlap(SpriteKind.Enemy1, SpriteKind.Projectile, function (sprite, ot
     sprites.destroy(mySprite14)
     info.changeScoreBy(1)
 })
-sprites.onOverlap(SpriteKind.NPC1, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.gameOver(false)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`armory inside door 2`, function (sprite, location) {
-    if (level == 7) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(440, 287)
-        level = 0
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile61, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[12])
+        mySprite.setPosition(25, 160)
+        level = 12
         NPC_Spawn()
         Enemy_NPC()
     }
+})
+sprites.onOverlap(SpriteKind.NPC1, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.NPC2, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.gameOver(false)
@@ -466,7 +516,7 @@ function Enemy_NPC () {
             ........................
             ........................
             `, SpriteKind.Enemy1)
-        tiles.placeOnRandomTile(mySprite14, assets.tile`myTile27`)
+        tiles.placeOnRandomTile(mySprite14, myTiles.tile72)
         mySprite14.follow(mySprite, 80)
     }
     if (level == 10) {
@@ -498,10 +548,35 @@ function Enemy_NPC () {
             ........................
             ........................
             `, SpriteKind.Enemy2)
-        tiles.placeOnRandomTile(mySprite16, assets.tile`myTile17`)
+        tiles.placeOnRandomTile(mySprite16, myTiles.tile39)
         mySprite16.follow(mySprite, 70)
     }
 }
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile53, function (sprite, location) {
+    if (level == 6) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(200, 450)
+        level = 0
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+// Robotics Team Number 58 for code
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile73, function (sprite, location) {
+    BombCode1 = game.askForNumber("Password", 2)
+    if (BombCode1 == 58) {
+        tiles.setCurrentTilemap(maps[10])
+        mySprite.setPosition(150, 200)
+        level = 10
+        NPC_Spawn()
+        info.changeCountdownBy(240)
+    } else {
+        tiles.setCurrentTilemap(maps[10])
+        mySprite.setPosition(50, 200)
+        level = 10
+        NPC_Spawn()
+    }
+})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setImage(img`
         . . . . f f f f . . . . . 
@@ -526,15 +601,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     Faceingup = false
     Faceingdown = true
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[7])
-        mySprite.setPosition(25, 175)
-        level = 7
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
 sprites.onOverlap(SpriteKind.NPC5, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.gameOver(false)
 })
@@ -544,43 +610,16 @@ info.onLifeZero(function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy2, function (sprite, otherSprite) {
     statusbar.value += -10
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door9 --2`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile23, function (sprite, location) {
     if (level == 0) {
-        tiles.setCurrentTilemap(maps[11])
-        mySprite.setPosition(25, 175)
-        level = 11
+        tiles.setCurrentTilemap(maps[2])
+        mySprite.setPosition(25, 160)
+        level = 2
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -2 -Shop outside`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[1])
-        mySprite.setPosition(310, 175)
-        level = 1
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8 --2`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[7])
-        mySprite.setPosition(25, 175)
-        level = 7
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door9`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[11])
-        mySprite.setPosition(25, 175)
-        level = 11
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`House 4 inside`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile47, function (sprite, location) {
     if (level == 12) {
         tiles.setCurrentTilemap(maps[0])
         mySprite.setPosition(245, 290)
@@ -592,56 +631,38 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`House 4 inside`, function (sp
 sprites.onOverlap(SpriteKind.NPC3, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.gameOver(false)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door10 --2`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile20, function (sprite, location) {
     if (level == 0) {
-        tiles.setCurrentTilemap(maps[9])
-        mySprite.setPosition(660, 50)
-        level = 9
+        tiles.setCurrentTilemap(maps[5])
+        mySprite.setPosition(323, 160)
+        level = 5
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door-2-1 -Shop inside`, function (sprite, location) {
-    if (level == 1) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile44, function (sprite, location) {
+    if (level == 11) {
         tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(200, 130)
+        mySprite.setPosition(245, 945)
         level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door6 --2`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[4])
-        mySprite.setPosition(25, 160)
-        level = 4
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -Shop outside`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[1])
-        mySprite.setPosition(310, 175)
-        level = 1
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside`, function (sprite, location) {
-    if (level == 2) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile63, function (sprite, location) {
+    if (level == 9) {
         tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(245, 130)
+        mySprite.setPosition(1380, 145)
         level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 --0`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[12])
-        mySprite.setPosition(25, 160)
-        level = 12
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile55, function (sprite, location) {
+    if (level == 7) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(440, 287)
+        level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -676,7 +697,7 @@ function NPC_Spawn () {
             ........................
             ........................
             `, SpriteKind.NPC)
-        tiles.placeOnRandomTile(mySprite2, assets.tile`myTile21`)
+        tiles.placeOnRandomTile(mySprite2, myTiles.tile66)
         animation.runImageAnimation(
         mySprite2,
         [img`
@@ -751,7 +772,7 @@ function NPC_Spawn () {
             . . . . . f f f f f f . . . . . 
             . . . . . f f . . f f . . . . . 
             `, SpriteKind.NPC)
-        tiles.placeOnRandomTile(mySprite3, assets.tile`myTile17`)
+        tiles.placeOnRandomTile(mySprite3, myTiles.tile39)
         mySprite4 = sprites.create(img`
             ........................
             ........................
@@ -778,7 +799,7 @@ function NPC_Spawn () {
             ........................
             ........................
             `, SpriteKind.NPC)
-        tiles.placeOnRandomTile(mySprite4, assets.tile`myTile22`)
+        tiles.placeOnRandomTile(mySprite4, myTiles.tile67)
         mySprite5 = sprites.create(img`
             ........................
             ........................
@@ -805,7 +826,7 @@ function NPC_Spawn () {
             ........................
             ........................
             `, SpriteKind.NPC)
-        tiles.placeOnRandomTile(mySprite5, assets.tile`myTile23`)
+        tiles.placeOnRandomTile(mySprite5, myTiles.tile68)
         mySprite6 = sprites.create(img`
             ........................
             ........................
@@ -832,7 +853,7 @@ function NPC_Spawn () {
             ........................
             ........................
             `, SpriteKind.NPC)
-        tiles.placeOnRandomTile(mySprite6, assets.tile`myTile24`)
+        tiles.placeOnRandomTile(mySprite6, myTiles.tile69)
         mySprite7 = sprites.create(img`
             ........................
             ........................
@@ -859,7 +880,7 @@ function NPC_Spawn () {
             ........................
             ........................
             `, SpriteKind.NPC)
-        tiles.placeOnRandomTile(mySprite7, assets.tile`myTile25`)
+        tiles.placeOnRandomTile(mySprite7, myTiles.tile70)
     }
     if (level == 1) {
         tiles.setCurrentTilemap(maps[1])
@@ -882,7 +903,7 @@ function NPC_Spawn () {
             . . . . c b 5 5 5 5 b c . . . . 
             . . . . . f f f f f f . . . . . 
             `, SpriteKind.NPC1)
-        tiles.placeOnRandomTile(mySprite8, assets.tile`myTile26`)
+        tiles.placeOnRandomTile(mySprite8, myTiles.tile71)
     }
     if (level == 7) {
         tiles.setCurrentTilemap(maps[7])
@@ -905,7 +926,7 @@ function NPC_Spawn () {
             . . . f f f f f f . . . 
             . . . f f . . f f . . . 
             `, SpriteKind.NPC2)
-        tiles.placeOnRandomTile(mySprite9, assets.tile`myTile17`)
+        tiles.placeOnRandomTile(mySprite9, myTiles.tile39)
     }
     if (level == 13) {
         tiles.setCurrentTilemap(maps[13])
@@ -928,7 +949,30 @@ function NPC_Spawn () {
             . . . . f f b b f f . . . . 
             `, SpriteKind.NPC3)
         level = 13
-        tiles.placeOnRandomTile(mySprite10, assets.tile`myTile17`)
+        tiles.placeOnRandomTile(mySprite10, myTiles.tile39)
+    }
+    if (level == 13) {
+        tiles.setCurrentTilemap(maps[13])
+        Mysprite17 = sprites.create(img`
+            . b b b b b b b b b b b b b b . 
+            b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+            b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+            b b b b b b b d d b b b b b b b 
+            . b b b b b b c c b b b b b b . 
+            b c c c c c b c c b c c c c c b 
+            b c c c c c c b b c c c c c c b 
+            b c c c c c c c c c c c c c c b 
+            b c c c c c c c c c c c c c c b 
+            b b b b b b b b b b b b b b b b 
+            b e e e e e e e e e e e e e e b 
+            b e e e e e e e e e e e e e e b 
+            b c e e e e e e e e e e e e c b 
+            b b b b b b b b b b b b b b b b 
+            . b b . . . . . . . . . . b b . 
+            `, SpriteKind.NPC3)
+        Mysprite17.setPosition(585, 24)
+        level = 13
     }
     if (level == 10) {
         tiles.setCurrentTilemap(maps[10])
@@ -951,7 +995,7 @@ function NPC_Spawn () {
             . . . f f f f f f . . . . 
             . . . f f . . f f . . . . 
             `, SpriteKind.NPC4)
-        tiles.placeOnRandomTile(mySprite11, assets.tile`myTile26`)
+        tiles.placeOnRandomTile(mySprite11, myTiles.tile71)
     }
     if (level == 11) {
         tiles.setCurrentTilemap(maps[11])
@@ -974,19 +1018,19 @@ function NPC_Spawn () {
             . . . . c b 6 6 6 6 b c . . . . 
             . . . . . f f f f f f . . . . . 
             `, SpriteKind.NPC5)
-        tiles.placeOnRandomTile(mySprite12, assets.tile`myTile26`)
+        tiles.placeOnRandomTile(mySprite12, myTiles.tile71)
     }
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door5 --2 house 1`, function (sprite, location) {
-    if (level == 0) {
-        tiles.setCurrentTilemap(maps[2])
-        mySprite.setPosition(25, 160)
-        level = 2
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile46, function (sprite, location) {
+    if (level == 12) {
+        tiles.setCurrentTilemap(maps[0])
+        mySprite.setPosition(245, 290)
+        level = 0
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Door0`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile22, function (sprite, location) {
     if (level == 0) {
         tiles.setCurrentTilemap(maps[5])
         mySprite.setPosition(323, 160)
@@ -995,29 +1039,20 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door0`, function (sprite, loc
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`House 3 door2`, function (sprite, location) {
-    if (level == 5) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(200, 290)
-        level = 0
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile21, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[6])
+        mySprite.setPosition(323, 160)
+        level = 6
         NPC_Spawn()
         Enemy_NPC()
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside2`, function (sprite, location) {
-    if (level == 2) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(245, 130)
-        level = 0
-        NPC_Spawn()
-        Enemy_NPC()
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`House 6 inside0`, function (sprite, location) {
-    if (level == 4) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(245, 450)
-        level = 0
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile32, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[11])
+        mySprite.setPosition(25, 175)
+        level = 11
         NPC_Spawn()
         Enemy_NPC()
     }
@@ -1034,24 +1069,34 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (spr
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorLight2, function (sprite, location) {
 	
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    statusbar.value += -10
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Armory inside door 1`, function (sprite, location) {
-    if (level == 7) {
-        tiles.setCurrentTilemap(maps[0])
-        mySprite.setPosition(440, 287)
-        level = 0
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile29, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[7])
+        mySprite.setPosition(25, 175)
+        level = 7
         NPC_Spawn()
         Enemy_NPC()
     }
 })
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile18, function (sprite, location) {
+    if (level == 0) {
+        tiles.setCurrentTilemap(maps[1])
+        mySprite.setPosition(310, 175)
+        level = 1
+        NPC_Spawn()
+        Enemy_NPC()
+    }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    statusbar.value += -10
+})
 let Bullet: Sprite = null
+let BombCode1 = 0
 let mySprite14: Sprite = null
 let mySprite16: Sprite = null
-let code = 0
 let mySprite8: Sprite = null
 let mySprite11: Sprite = null
+let Mysprite17: Sprite = null
 let mySprite10: Sprite = null
 let mySprite13: Sprite = null
 let mySprite9: Sprite = null
@@ -1067,6 +1112,7 @@ let Faceingup = false
 let Faceingright = false
 let Faceingleft = false
 let level = 0
+let code = 0
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let maps: tiles.TileMapData[] = []
