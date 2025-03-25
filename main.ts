@@ -572,8 +572,9 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile73, function (sprite, locatio
         info.changeCountdownBy(240)
     } else {
         tiles.setCurrentTilemap(maps[10])
-        mySprite.setPosition(50, 200)
+        mySprite.setPosition(150, 200)
         level = 10
+        info.changeCountdownBy(-60)
         NPC_Spawn()
     }
 })
