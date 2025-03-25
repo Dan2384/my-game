@@ -566,13 +566,13 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile73, function (sprite, locatio
     BombCode1 = game.askForNumber("Password", 2)
     if (BombCode1 == 58) {
         tiles.setCurrentTilemap(maps[10])
-        mySprite.setPosition(160, 200)
+        mySprite.setPosition(150, 200)
         level = 10
         NPC_Spawn()
         info.changeCountdownBy(240)
     } else {
         tiles.setCurrentTilemap(maps[10])
-        mySprite.setPosition(160, 200)
+        mySprite.setPosition(50, 200)
         level = 10
         NPC_Spawn()
     }
