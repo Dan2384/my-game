@@ -9,6 +9,7 @@ namespace SpriteKind {
     export const Enemy2 = SpriteKind.create()
     export const NPC6 = SpriteKind.create()
     export const NPC7 = SpriteKind.create()
+    export const NPC8 = SpriteKind.create()
 }
 // Robotics Team Number for code
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile56, function (sprite, location) {
@@ -712,6 +713,13 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile20, function (sprite, locatio
         Enemy_NPC()
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC8, function (sprite, otherSprite) {
+    if (otherSprite == Mysprite20) {
+        timer.throttle("action", 6000, function () {
+            Mysprite20.sayText("5687", 3000, true)
+        })
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile44, function (sprite, location) {
     if (level == 11) {
         tiles.setCurrentTilemap(maps[0])
@@ -1138,6 +1146,29 @@ function NPC_Spawn () {
             `, SpriteKind.NPC7)
         tiles.placeOnRandomTile(mysprite19, myTiles.tile71)
     }
+    if (level == 11) {
+        tiles.setCurrentTilemap(maps[11])
+        Mysprite20 = sprites.create(img`
+            . b b b b b b b b b b b b b b . 
+            b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+            b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+            b b b b b b b d d b b b b b b b 
+            . b b b b b b c c b b b b b b . 
+            b c c c c c b c c b c c c c c b 
+            b c c c c c c b b c c c c c c b 
+            b c c c c c c c c c c c c c c b 
+            b c c c c c c c c c c c c c c b 
+            b b b b b b b b b b b b b b b b 
+            b e e e e e e e e e e e e e e b 
+            b e e e e e e e e e e e e e e b 
+            b c e e e e e e e e e e e e c b 
+            b b b b b b b b b b b b b b b b 
+            . b b . . . . . . . . . . b b . 
+            `, SpriteKind.NPC8)
+        Mysprite20.setPosition(230, 310)
+        level = 11
+    }
 }
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile46, function (sprite, location) {
     if (level == 12) {
@@ -1209,6 +1240,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     statusbar.value += -10
 })
 let Bullet: Sprite = null
+let Mysprite20: Sprite = null
 let mySprite14: Sprite = null
 let mySprite16: Sprite = null
 let mysprite18: Sprite = null
