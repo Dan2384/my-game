@@ -264,6 +264,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`TNT0`, function (sprite, loca
             level = 16
             NPC_Spawn()
             info.changeCountdownBy(240)
+            Bombpoints += 1
         } else {
             tiles.setCurrentTilemap(maps[7])
             mySprite.setPosition(50, 50)
@@ -498,6 +499,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`TNT1`, function (sprite, loca
             level = 14
             NPC_Spawn()
             info.changeCountdownBy(240)
+            Bombpoints += 1
         } else {
             tiles.setCurrentTilemap(maps[10])
             mySprite.setPosition(150, 200)
@@ -1325,6 +1327,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`TNT2`, function (sprite, loca
             level = 15
             NPC_Spawn()
             info.changeCountdownBy(240)
+            Bombpoints += 1
         } else {
             tiles.setCurrentTilemap(maps[1])
             mySprite.setPosition(213, 311)
@@ -1430,6 +1433,7 @@ statusbar.setBarBorder(1, 15)
 statusbar.attachToSprite(mySprite)
 statusbar.setOffsetPadding(0, 3)
 info.startCountdown(240)
+let Bombpoints = 0
 forever(function () {
     if (info.score() == 4) {
         info.changeLifeBy(1)
@@ -1571,5 +1575,10 @@ forever(function () {
     }
     if (level != 4) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC11)
+    }
+})
+forever(function () {
+    if (Bombpoints == 3) {
+        game.gameOver(true)
     }
 })
