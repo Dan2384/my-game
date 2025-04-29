@@ -209,6 +209,88 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`cave 2`, function (sprite, lo
         Enemy_NPC()
     }
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Faceingup == true) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . f 5 f . . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 0, -100)
+    }
+    if (Faceingright == true) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . f 5 5 5 5 5 f . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 100, 0)
+    }
+    if (Faceingleft == true) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . f 5 5 5 5 5 f . . . . . 
+            . . . . . f 5 5 5 5 f . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, -100, 0)
+    }
+    if (Faceingdown == true) {
+        Bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . f 5 5 5 f . . . . . 
+            . . . . . . . f 5 f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 0, 100)
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`house 4 inside 2`, function (sprite, location) {
     if (level == 12) {
         tiles.setCurrentTilemap(maps[0])
@@ -695,8 +777,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -2 -Shop outside`, func
         tiles.setCurrentTilemap(maps[1])
         mySprite.setPosition(310, 175)
         level = 1
-        NPC_Spawn()
-        Enemy_NPC()
+        timer.after(500, function () {
+            NPC_Spawn()
+            Enemy_NPC()
+        })
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Door8 --2`, function (sprite, location) {
@@ -777,8 +861,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Door1 -Shop outside`, functio
         tiles.setCurrentTilemap(maps[1])
         mySprite.setPosition(310, 175)
         level = 1
-        NPC_Spawn()
-        Enemy_NPC()
+        timer.after(500, function () {
+            NPC_Spawn()
+            Enemy_NPC()
+        })
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`house 1 inside`, function (sprite, location) {
@@ -1370,7 +1456,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Armory inside door 1`, functi
         Enemy_NPC()
     }
 })
-let Bullet: Sprite = null
 let Mysprite20: Sprite = null
 let mySprite14: Sprite = null
 let mySprite16: Sprite = null
@@ -1384,6 +1469,7 @@ let mySprite10: Sprite = null
 let mySprite13: Sprite = null
 let mySprite9: Sprite = null
 let BombCode1 = 0
+let Bullet: Sprite = null
 let mySprite12: Sprite = null
 let mysprite19: Sprite = null
 let mySprite7: Sprite = null
@@ -1444,6 +1530,8 @@ controller.moveSprite(mySprite, 100, 100)
 mySprite.z = 1
 scene.cameraFollowSprite(mySprite)
 tiles.setCurrentTilemap(tilemap`Main level 0`)
+game.showLongText("Defuse all of the bombs before the time runs out!!!", DialogLayout.Bottom)
+game.showLongText("The codes are hidden throughout the world. Good luck!", DialogLayout.Bottom)
 NPC_Spawn()
 Enemy_NPC()
 statusbar = statusbars.create(20, 4, StatusBarKind.Health)
@@ -1456,111 +1544,6 @@ statusbar.setOffsetPadding(0, 3)
 info.startCountdown(240)
 let Bombpoints = 0
 Intro()
-forever(function () {
-    if (info.score() == 4) {
-        info.changeLifeBy(1)
-        info.setScore(0)
-    }
-})
-forever(function () {
-    if (Faceingleft == true && controller.A.isPressed()) {
-        Bullet = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . f f f f . . . . . . 
-            . . . . . f 5 5 5 5 f . . . . . 
-            . . . . f 5 5 5 5 5 f . . . . . 
-            . . . . . f 5 5 5 5 f . . . . . 
-            . . . . . . f f f f . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, mySprite, -100, 0)
-    }
-})
-forever(function () {
-    if (Faceingright == true && controller.A.isPressed()) {
-        Bullet = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . f f f f . . . . . . 
-            . . . . . f 5 5 5 5 f . . . . . 
-            . . . . . f 5 5 5 5 5 f . . . . 
-            . . . . . f 5 5 5 5 f . . . . . 
-            . . . . . . f f f f . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, mySprite, 100, 0)
-    }
-})
-forever(function () {
-    if (Faceingup == true && controller.A.isPressed()) {
-        Bullet = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . f . . . . . . . 
-            . . . . . . . f 5 f . . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . . f f f . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, mySprite, 0, -100)
-    }
-})
-forever(function () {
-    if (Faceingdown == true && controller.A.isPressed()) {
-        Bullet = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . f f f . . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . f 5 5 5 f . . . . . 
-            . . . . . . . f 5 f . . . . . . 
-            . . . . . . . . f . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, mySprite, 0, 100)
-    }
-})
-forever(function () {
-    if (level != 0) {
-        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-    }
-    if (level != 13) {
-        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy1)
-    }
-    if (level != 10) {
-        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy2)
-    }
-})
 forever(function () {
     if (level != 0) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
@@ -1595,8 +1578,26 @@ forever(function () {
     if (level != 4) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC10)
     }
-    if (level != 4) {
+    if (level != 16) {
         sprites.destroyAllSpritesOfKind(SpriteKind.NPC11)
+    }
+})
+forever(function () {
+	
+})
+forever(function () {
+    if (level != 0) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    }
+    if (level != 13) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy1)
+    }
+    if (level != 10) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy2)
+    }
+    if (info.score() == 4) {
+        info.changeLifeBy(1)
+        info.setScore(0)
     }
 })
 forever(function () {
